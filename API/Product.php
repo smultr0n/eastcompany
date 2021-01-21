@@ -11,15 +11,18 @@ class Product {
     //lös vart bilderna skall komma infrån
     private $image;
 
-    public function __construct($name, $description, $image)
+    public function __construct($name, $image)
     {
         $this->name = $name;
-        $this->description = $description;
+        $this->description = self::lorem();
         $this->image = $image;
         $this->price = rand(5, 20);
         $this->stock = rand(0, 50);    
     }
-
+    public static function lorem(){
+        $endpoint = "https://loripsum.net/api/1";
+        return file_get_contents($endpoint);
+    }
     //gör objekt till en associative array
     public function toArray(){
         $array = array(
