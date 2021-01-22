@@ -24,7 +24,8 @@ class Data
     {
         $output = "";
         foreach ($array as $key => $value) {
-            $output .= "<div class='row product'><img class='thumbnail' src='" . $value['image'] . "'>
+            $output .= "<div class='row product'><img class='thumbnail col' src='" . $value['image'] . "'>
+            <div class='product-info col'>
             <p class='name'>" . $value['name'] . "</p>
             <p class='description'>" . $value['description'] . "</p>
             <p class='price'>$" . $value['price'] . "</p>";
@@ -33,7 +34,7 @@ class Data
             } else{
                 $output .= "<p class='stock'>" . $value['stock'] . "st finns i lager </p>";   
             }
-            $output .= "</div>";
+            $output .= "</div></div>";
         }
         echo $output;
     }
