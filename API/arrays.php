@@ -1,6 +1,6 @@
 <?php
 
-$name = array(
+$productNames = array(
     0 => "Coca Cola Energy",
     1 => "Pringles Sourcream and Onion",
     2 => "OLW Ranch",
@@ -12,7 +12,3 @@ $name = array(
     8 => "Kexchoklad",
     9 => "Camel Blue"
 );
-
-$images = array(
-    
-)

@@ -4,10 +4,11 @@ include("arrays.php");
 header('Content-Type: application/json');
 $products = array();
 
-//gör 10 produktjävlar (tror det ska vara 10) och pushar in dom i en äcklig jävla array
-//TODO: gör arrayer för name och description
-for ($i=0; $i < 10 ; $i++) { 
-    $product = new Product($names[$i], );
+//gör 10 produktobjekt och stoppar dom i en array
+for ($i = 0; $i < 10; $i++) {
+    $name = $productNames[$i];
+    $image = "localhost/eastcompany/API/images/$i.jpg";
+    $product = new Product($name, $image);
     array_push($products, $product->toArray());
 }
 
