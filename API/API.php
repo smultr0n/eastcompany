@@ -7,7 +7,7 @@ $products = array();
 //gör 10 produktobjekt och stoppar dom i en array
 for ($i = 0; $i < 10; $i++) {
     $name = $productNames[$i];
-    $image = "localhost/eastcompany/API/images/$i.jpg";
+    $image = "http://localhost/eastcompany/API/images/$i.jpg";
     $product = new Product($name, $image);
     array_push($products, $product->toArray());
 }
