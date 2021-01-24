@@ -8,12 +8,12 @@ class Product
     private $stock;
     private $image;
 
-    public function __construct($name, $image)
+    public function __construct($name, $image, $price)
     {
         $this->name = $name;
         $this->description = self::lorem();
         $this->image = $image;
-        $this->price = rand(5, 20);
+        $this->price = $price;
         $this->stock = rand(0, 50);
     }
 

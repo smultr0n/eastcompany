@@ -6,9 +6,13 @@ class Data
 
     public static function main()
     {
-        $array = self::getData();
-
-        self::viewData($array);
+        try {
+            $array = self::getData();
+            self::viewData($array);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+        
     }
 
     public static function getData()

@@ -12,3 +12,16 @@ $productNames = array(
     8 => "Kexchoklad",
     9 => "Camel Blue"
 );
+
+$productPrices = array(
+    0 => 10,
+    1 => 18,
+    2 => 23,
+    3 => 12,
+    4 => 10,
+    5 => 12,
+    6 => 9,
+    7 => 14,
+    8 => 11,
+    9 => 54
+);
