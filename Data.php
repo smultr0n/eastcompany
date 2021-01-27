@@ -12,12 +12,13 @@ class Data
         } catch (Exception $e) {
             echo $e->getMessage();
         }
-        
     }
 
     public static function getData()
     {
-        $json = @file_get_contents(self::$ENDPOINT);
+        //get request som skickar get request till apin
+        $show = isset($_GET["show"]) ? $_GET["show"] : 10;
+        $json = @file_get_contents(self::$ENDPOINT . "?show=$show");
         if (!$json)
             throw new Exception("<h1>Ett fel har inträffat</h1>");
 
@@ -27,19 +28,24 @@ class Data
     public static function viewData($array)
     {
         $output = "";
-        foreach ($array as $key => $value) {
-            $output .= "<div class='row product'><img class='thumbnail col' src='" . $value['image'] . "'>
-            <div class='product-info col'>
-            <p class='name'>" . $value['name'] . "</p>
-            <p class='description'>" . $value['description'] . "</p>
-            <p class='price'>$" . $value['price'] . "</p>";
-            if($value['stock'] == 0){
-                $output .= "<p class='stock' id='no-stock'>Finns ej i lager</p>";    
-            } else{
-                $output .= "<p class='stock'>" . $value['stock'] . "st finns i lager </p>";   
+        if (array_key_exists("error", $array)) {
+            $output .= "<p class='error'>" . $array["error"] . "</p>";
+        } else {
+            foreach ($array as $key => $value) {
+                $output .= "<div class='row product'><img class='thumbnail col' src='http://localhost/eastcompany/API/images/" . $value['image'] . "'>
+                <div class='product-info col'>
+                <p class='name'>" . $value['name'] . "</p>
+                <p class='description'>" . $value['description'] . "</p>
+                <p class='price'>" . $value['price'] . "kr</p>";
+                if ($value['stock'] == 0) {
+                    $output .= "<p class='stock' id='no-stock'>Finns ej i lager</p>";
+                } else {
+                    $output .= "<p class='stock'>" . $value['stock'] . "st finns i lager </p>";
+                }
+                $output .= "</div></div>";
             }
-            $output .= "</div></div>";
         }
+
         echo $output;
     }
 }
